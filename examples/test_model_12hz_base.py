@@ -62,7 +62,7 @@ def main():
     ref_text_single = "Okay. Yeah. I resent you. I love you. I respect you. But you know what? You blew it! And thanks to you."
     ref_text_batch = [
         "Okay. Yeah. I resent you. I love you. I respect you. But you know what? You blew it! And thanks to you.",
-        "甚至出现交易几乎停滞的情况。",
+        "Trading has almost come to a standstill.",
     ]
 
     # Synthesis targets
@@ -71,9 +71,9 @@ def main():
 
     syn_text_batch = [
         "Good one. Okay, fine, I'm just gonna leave this sock monkey here. Goodbye.",
-        "其实我真的有发现，我是一个特别善于观察别人情绪的人。",
+        "I really did discover that I'm particularly good at observing other people's emotions.",
     ]
-    syn_lang_batch = ["Chinese", "English"]
+    syn_lang_batch = ["English", "English"]
 
     common_gen_kwargs = dict(
         max_new_tokens=2048,

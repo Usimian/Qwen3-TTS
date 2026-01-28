@@ -36,10 +36,10 @@ def main():
     t0 = time.time()
 
     wavs, sr = tts.generate_custom_voice(
-        text="其实我真的有发现，我是一个特别善于观察别人情绪的人。",
-        language="Chinese",
+        text="I really did discover that I'm particularly good at observing other people's emotions.",
+        language="English",
         speaker="Vivian",
-        instruct="用特别愤怒的语气说",
+        instruct="Say it in a very angry tone",
     )
 
     torch.cuda.synchronize()
@@ -49,8 +49,8 @@ def main():
     sf.write("qwen3_tts_test_custom_single.wav", wavs[0], sr)
 
     # -------- Batch (some empty instruct) --------
-    texts = ["其实我真的有发现，我是一个特别善于观察别人情绪的人。", "She said she would be here by noon."]
-    languages = ["Chinese", "English"]
+    texts = ["I really did discover that I'm particularly good at observing other people's emotions.", "She said she would be here by noon."]
+    languages = ["English", "English"]
     speakers = ["Vivian", "Ryan"]
     instructs = ["", "Very happy."]
 

@@ -1,0 +1,49 @@
+services:
+  qwen3-tts:
+    build: .
+    image: qwen3-tts:latest
+    container_name: qwen3-tts
+    ports:
+      - "8000:8000"
+    volumes:
+      # Cache the model downloads
+      - huggingface-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      # Set the model to use. Options:
+      # - base (voice cloning from audio)
+      # - customvoice (pre-defined speakers with emotion control)
+      # - voicedesign (generate voices from text descriptions)
+      # - small (smaller/faster customvoice model)
+      - MODEL=${MODEL:-base}
+    command: >
+      bash -c "
+      case $${MODEL} in
+        base)
+          qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-Base --ip 0.0.0.0 --port 8000 --no-flash-attn
+          ;;
+        customvoice)
+          qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice --ip 0.0.0.0 --port 8000 --no-flash-attn
+          ;;
+        voicedesign)
+          qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign --ip 0.0.0.0 --port 8000 --no-flash-attn
+          ;;
+        small)
+          qwen-tts-demo Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice --ip 0.0.0.0 --port 8000 --no-flash-attn
+          ;;
+        *)
+          echo 'Invalid MODEL value. Use: base, customvoice, voicedesign, or small'
+          exit 1
+          ;;
+      esac
+      "
+
+volumes:
+  huggingface-cache:

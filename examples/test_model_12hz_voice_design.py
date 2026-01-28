@@ -36,9 +36,9 @@ def main():
     t0 = time.time()
 
     wavs, sr = tts.generate_voice_design(
-        text="哥哥，你回来啦，人家等了你好久好久了，要抱抱！",
-        language="Chinese",
-        instruct="体现撒娇稚嫩的萝莉女声，音调偏高且起伏明显，营造出黏人、做作又刻意卖萌的听觉效果。",
+        text="Brother, you're back! I've been waiting for you for so long, give me a hug!",
+        language="English",
+        instruct="Speak in a playful, youthful female voice with high pitch and noticeable inflections, creating a clingy, affectionate, and deliberately cute effect.",
     )
 
     torch.cuda.synchronize()
@@ -49,12 +49,12 @@ def main():
 
     # -------- Batch --------
     texts = [
-        "哥哥，你回来啦，人家等了你好久好久了，要抱抱！",
+        "Brother, you're back! I've been waiting for you for so long, give me a hug!",
         "It's in the top drawer... wait, it's empty? No way, that's impossible! I'm sure I put it there!"
     ]
-    languages = ["Chinese", "English"]
+    languages = ["English", "English"]
     instructs = [
-        "体现撒娇稚嫩的萝莉女声，音调偏高且起伏明显，营造出黏人、做作又刻意卖萌的听觉效果。",
+        "Speak in a playful, youthful female voice with high pitch and noticeable inflections, creating a clingy, affectionate, and deliberately cute effect.",
         "Speak in an incredulous tone, but with a hint of panic beginning to creep into your voice."
     ]
 
