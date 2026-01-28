@@ -1,4 +1,7 @@
-# Qwen3-TTS
+# Qwen3-TTS (English + Docker Edition)
+
+> **This is a community fork with English-only UI and comprehensive Docker support.**
+> **Original repository:** [QwenLM/Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)
 
 <br>
 
@@ -13,6 +16,77 @@
 
 </p>
 
+## 🌟 What's Different in This Fork
+
+This fork adds several improvements to make Qwen3-TTS easier to use for English speakers:
+
+### ✅ **Fully English Interface**
+- All web UI text translated from Chinese to English
+- All error messages and status text in English
+- All example files use English text
+- All code comments translated to English
+
+### 🐳 **Complete Docker Support**
+- Ready-to-use Docker setup with `docker-compose.yml`
+- Easy model switching via `.env` file (no YAML editing needed)
+- GPU support with NVIDIA Container Toolkit
+- Persistent model caching with Docker volumes
+
+### 📚 **Comprehensive Documentation**
+- **[QUICK_START.md](QUICK_START.md)** - Get started in 2 minutes
+- **[DOCKER_README.md](DOCKER_README.md)** - Complete Docker guide
+- **[STEP_BY_STEP_VOICE_CLONING.md](STEP_BY_STEP_VOICE_CLONING.md)** - Voice cloning tutorial
+- **[VOICE_CLONING_GUIDE.md](VOICE_CLONING_GUIDE.md)** - Advanced voice cloning
+- All guides in English only
+
+### 🚀 **Quick Start with Docker**
+
+```bash
+# Clone this repository
+git clone https://github.com/Usimian/Qwen3-TTS.git
+cd Qwen3-TTS
+
+# Choose your model (edit .env file)
+# MODEL=base          # Voice cloning (default)
+# MODEL=customvoice   # Pre-defined speakers
+# MODEL=voicedesign   # Voice from text description
+# MODEL=small         # Smaller/faster model
+
+# Start with Docker
+docker compose up
+
+# Access the web UI
+# Open http://localhost:8000 in your browser
+```
+
+### 🎯 **Model Selection Made Easy**
+
+Switch models by editing `.env` or using command line:
+
+```bash
+# Voice cloning
+MODEL=base docker compose up
+
+# Pre-defined speakers with emotions
+MODEL=customvoice docker compose up
+
+# Generate voice from text description
+MODEL=voicedesign docker compose up
+```
+
+### 📁 **Supported Audio Formats**
+
+When uploading audio for voice cloning:
+- ✅ WAV (.wav) - Recommended
+- ✅ FLAC (.flac) - Lossless
+- ✅ MP3 (.mp3)
+- ✅ OGG (.ogg)
+- ✅ M4A (.m4a)
+
+---
+
+## About Qwen3-TTS
+
 We release **Qwen3-TTS**, a series of powerful speech generation capabilities developed by Qwen, offering comprehensive support for voice clone, voice design, ultra-high-quality human-like speech generation, and natural language-based voice control. It provides developers and users with the most extensive set of speech generation features available.
 
 
@@ -21,6 +95,9 @@ We release **Qwen3-TTS**, a series of powerful speech generation capabilities de
 
 ## Contents <!-- omit in toc -->
 
+- [🌟 What's Different in This Fork](#-whats-different-in-this-fork)
+- [🚀 Quick Start with Docker](#-quick-start-with-docker)
+- [📚 Fork-Specific Documentation](#-fork-specific-documentation)
 - [Overview](#overview)
   - [Introduction](#introduction)
   - [Model Architecture](#model-architecture)
@@ -39,6 +116,30 @@ We release **Qwen3-TTS**, a series of powerful speech generation capabilities de
 - [Fine Tuning](#fine-tuning)
 - [Evaluation](#evaluation)
 - [Citation](#citation)
+
+## 📚 Fork-Specific Documentation
+
+This fork includes comprehensive English documentation for getting started:
+
+| Guide | Description |
+|-------|-------------|
+| **[QUICK_START.md](QUICK_START.md)** | Get up and running in 2 minutes with Docker |
+| **[DOCKER_README.md](DOCKER_README.md)** | Complete Docker setup, commands, and troubleshooting |
+| **[STEP_BY_STEP_VOICE_CLONING.md](STEP_BY_STEP_VOICE_CLONING.md)** | Beginner-friendly voice cloning tutorial |
+| **[VOICE_CLONING_GUIDE.md](VOICE_CLONING_GUIDE.md)** | Advanced voice cloning with API examples |
+| **[TEST_RESULTS.md](TEST_RESULTS.md)** | Summary of changes and testing results |
+| **[CHINESE_TEXT_REMOVAL_SUMMARY.md](CHINESE_TEXT_REMOVAL_SUMMARY.md)** | Complete list of translations and removals |
+
+### Model Comparison
+
+| Model | Docker Command | Use Case | Features |
+|-------|---------------|----------|----------|
+| **Base** | `MODEL=base` | Voice cloning from audio | Upload 3-10s audio → clone voice |
+| **CustomVoice** | `MODEL=customvoice` | Pre-defined speakers | 9 voices + emotion control |
+| **VoiceDesign** | `MODEL=voicedesign` | Voice from text | "Deep British male voice" |
+| **Small** | `MODEL=small` | Faster/smaller | 0.6B model, less memory |
+
+---
 
 ## Overview
 ### Introduction
